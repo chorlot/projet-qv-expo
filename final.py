@@ -14,19 +14,19 @@ st.set_page_config(
 @st.cache_data(ttl=3600)
 def load_data_simple():
     """Charge les données depuis un fichier CSV."""
-    return pd.read_csv('/Users/charlesdurand/code/Test/indices_simples_ok.csv', dtype={'Code_insee': str, 'dep_code': str})
+    return pd.read_csv('indices_simples_ok.csv', dtype={'Code_insee': str, 'dep_code': str})
 
 @st.cache_data(ttl=3600)
 def load_data_complet():
     """Charge les données depuis un fichier CSV."""
-    return pd.read_csv('/Users/charlesdurand/code/Test/indices_complets_ok.csv', dtype={'Code_insee': str, 'dep_code': str})
+    return pd.read_csv('indices_complets_ok.csv', dtype={'Code_insee': str, 'dep_code': str})
 # Charger les données de villes
 df = load_data_simple()
 df2 = load_data_complet()
 df = df[~df['com_nom'].str.contains("Arrondissement", case=False, na=False)]
 df2 = df2[~df2['com_nom'].str.contains("Arrondissement", case=False, na=False)]
 
-st.sidebar.image('/Users/charlesdurand/code/Test/PROJET QV.png')
+st.sidebar.image('PROJET QV.png')
 #TITRE
 st.title('Projet QV')
 st.header('Qualité de Vie en France Métropolitaine', divider="grey")
@@ -646,7 +646,7 @@ with tab4:
 
     st.header('Construction de la base de données')
     left, right = st.columns(2, vertical_alignment="top")
-    left.image('/Users/charlesdurand/code/Test/flowchart_mermaid.png')
+    left.image('flowchart_mermaid.png')
     right.write('')
     right.write('**Étape 1** : Upload des tables brutes (raw data) dans BiqQuery.')
     right.write('')
